@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>证券市场完全入门指南 - 新手友好版</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        /* 左侧导航栏样式 */
+        #sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #1a237e 0%, #283593 100%);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 20px 0;
+            box-shadow: 3px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+        
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-header h2 i {
+            margin-right: 10px;
+            color: #ffd54f;
+        }
+        
+        .sidebar-header p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .nav-section {
+            margin-bottom: 25px;
+        }
+        
+        .nav-section h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0 20px;
+            margin-bottom: 10px;
+            opacity: 0.7;
+            font-weight: 600;
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-bottom: 2px;
+        }
+        
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left: 3px solid #ffd54f;
+        }
+        
+        .nav-links a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            border-left: 3px solid #ffd54f;
+            font-weight: 600;
+        }
+        
+        .nav-links i {
+            width: 20px;
+            margin-right: 12px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        /* 主要内容区域样式 */
+        #main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px;
+            max-width: 1200px;
+        }
+        
+        .chapter {
+            margin-bottom: 60px;
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            scroll-margin-top: 20px;
+        }
+        
+        .chapter-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .chapter-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1a237e, #3949ab);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .chapter-title {
+            font-size: 2rem;
+            color: #1a237e;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            color: #283593;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8eaf6;
+        }
+        
+        .subsection {
+            margin-bottom: 30px;
+        }
+        
+        .subsection-title {
+            font-size: 1.3rem;
+            color: #3949ab;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .subsection-title i {
+            margin-right: 10px;
+            color: #5c6bc0;
+        }
+        
+        .content-box {
+            background-color: #f5f7ff;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid #3949ab;
+        }
+        
+        .highlight-box {
+            background-color: #e8eaf6;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid #ffd54f;
+        }
+        
+        .warning-box {
+            background-color: #fff3e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .tip-box {
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .definition {
+            background-color: #f5f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #7986cb;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th {
+            background-color: #3949ab;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f5f7ff;
+        }
+        
+        ul, ol {
+            padding-left: 30px;
+            margin: 15px 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        .icon-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .icon-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .icon-list i {
+            margin-right: 15px;
+            color: #3949ab;
+            margin-top: 3px;
+        }
+        
+        .code-block {
+            background-color: #263238;
+            color: #e0f7fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .tree-diagram {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: monospace;
+            line-height: 1.8;
+        }
+        
+        .interactive-box {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 2px dashed #5c6bc0;
+            text-align: center;
+        }
+        
+        .interactive-box h4 {
+            margin-bottom: 15px;
+            color: #1a237e;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #1a237e, #3949ab);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            #sidebar {
+                transform: translateX(-100%);
+                width: 300px;
+            }
+            
+            #sidebar.active {
+                transform: translateX(0);
+            }
+            
+            #main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .sidebar-toggle {
+                display: block;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 1001;
+                background-color: #1a237e;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 15px;
+                font-size: 1.2rem;
+                cursor: pointer;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .chapter {
+                padding: 25px;
+            }
+            
+            .chapter-title {
+                font-size: 1.6rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+        
+        .sidebar-toggle {
+            display: none;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #1a237e;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            color: #666;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* 阅读进度指示器 */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #e0e0e0;
+            z-index: 1002;
+        }
+        
+        .reading-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd54f, #ffca28);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        /* 高亮当前阅读章节 */
+        .chapter:target {
+            animation: highlight 2s ease;
+        }
+        
+        @keyframes highlight {
+            0% { background-color: #fffde7; }
+            100% { background-color: white; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 移动端侧边栏切换按钮 -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- 阅读进度条 -->
+    <div class="reading-progress">
+        <div class="reading-progress-bar" id="readingProgress"></div>
+    </div>
+    
+    <!-- 左侧导航栏 -->
+    <aside id="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-book-open"></i> 证券投资指南</h2>
+            <p>新手友好版电子书</p>
+        </div>
+        
+        <!-- 导航菜单 -->
+        <div class="nav-section">
+            <h3>入门基础</h3>
+            <ul class="nav-links">
+                <li><a href="#chapter1" class="active"><i class="fas fa-bullseye"></i> 理解证券市场</a></li>
+                <li><a href="#chapter2"><i class="fas fa-chart-line"></i> 核心品种详解</a></li>
+                <li><a href="#chapter3"><i class="fas fa-map-marked-alt"></i> 市场地图</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-section">
+            <h3>投资实战</h3>
+            <ul class="nav-links">
+                <li><a href="#chapter4"><i class="fas fa-road"></i> 新手投资路线图</a></li>
+                <li><a href="#chapter5"><i class="fas fa-exclamation-triangle"></i> 新手避坑指南</a></li>
+                <li><a href="#chapter6"><i class="fas fa-graduation-cap"></i> 学习资源推荐</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-section">
+            <h3>专题工具</h3>
+            <ul class="nav-links">
+                <li><a href="#tool1"><i class="fas fa-calculator"></i> 理杏仁使用指南</a></li>
+                <li><a href="#tool2"><i class="fas fa-balance-scale"></i> 资产配置计算器</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-section">
+            <h3>附录</h3>
+            <ul class="nav-links">
+                <li><a href="#final"><i class="fas fa-heart"></i> 给新手的真心话</a></li>
+                <li><a href="#glossary"><i class="fas fa-book"></i> 术语表</a></li>
+            </ul>
+        </div>
+        
+        <!-- 阅读进度 -->
+        <div class="nav-section" style="padding: 0 20px;">
+            <div class="progress-text">
+                <span>阅读进度</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="sidebarProgress"></div>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- 主要内容区域 -->
+    <main id="main-content">
+        <!-- 第一章 -->
+        <section id="chapter1" class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div>
+                    <h1 class="chapter-title">第一部分：理解证券市场基础</h1>
+                    <p>建立正确的投资观念与基础知识</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🎯 什么是证券市场？</h2>
+                
+                <div class="content-box">
+                    <p><strong>类比理解</strong>：就像一个巨大的"金融超市"</p>
+                    <ul>
+                        <li><strong>买家</strong> = 投资者（你我这样的普通人、机构）</li>
+                        <li><strong>卖家</strong> = 公司、政府等需要资金的主体</li>
+                        <li><strong>商品</strong> = 各种证券（股票、债券等）</li>
+                        <li><strong>目的</strong>：让资金从有钱的人流向需要钱发展的地方</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-search"></i> 两个核心功能：</h3>
+                    <ol>
+                        <li><strong>融资功能（一级市场）</strong>：公司/政府"卖货"筹集资金
+                            <div class="definition">
+                                <strong>例如</strong>：公司上市IPO就是第一次公开"卖股份"
+                            </div>
+                        </li>
+                        <li><strong>交易功能（二级市场）</strong>：投资者之间互相"买卖二手货"
+                            <div class="definition">
+                                <strong>例如</strong>：股票交易就是买卖已经发行的股份
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-chart-line"></i> 为什么普通人要了解证券市场？</h3>
+                    <div class="icon-list">
+                        <li><i class="fas fa-shield-alt"></i> <strong>对抗通胀</strong>：钱存银行会"缩水"，投资可能保值增值</li>
+                        <li><i class="fas fa-handshake"></i> <strong>分享经济增长</strong>：好公司成长，股东一起受益</li>
+                        <li><i class="fas fa-egg"></i> <strong>理财多样化</strong>："不要把鸡蛋放在一个篮子里"</li>
+                        <li><i class="fas fa-bullseye"></i> <strong>长期财务规划</strong>：养老金、教育金等长期目标</li>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 第二章 -->
+        <section id="chapter2" class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div>
+                    <h1 class="chapter-title">第二部分：核心品种详解</h1>
+                    <p>从最安全到最激进的投资品种全解析</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">💰 品种1：债券——像"借条"一样的投资</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-graduation-cap"></i> 基本概念</h3>
+                    <div class="content-box">
+                        <p><strong>本质</strong>：你借钱给发行人，对方给你"借条"（债券）</p>
+                        <p><strong>核心要素</strong>：</p>
+                        <div class="code-block">
+                            借出：100元<br>
+                            利率：每年5%<br>
+                            期限：3年<br>
+                            结果：每年得5元利息，3年后拿回100元本金
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-sitemap"></i> 债券家族全解</h3>
+                    <div class="tree-diagram">
+                        债券大家庭<br>
+                        ├── 国债（最安全）<br>
+                        │   ├── 特点：国家发行，几乎零风险<br>
+                        │   ├── 收益：通常高于定期存款<br>
+                        │   └── 适合：极度保守型投资者<br>
+                        │<br>
+                        ├── 地方政府债<br>
+                        │   ├── 特点：地方政府发行，风险很低<br>
+                        │   ├── 收益：略高于国债<br>
+                        │   └── 例子：某省高速公路建设债券<br>
+                        │<br>
+                        ├── 金融债<br>
+                        │   ├── 发行：银行等金融机构<br>
+                        │   └── 风险：较低，但高于国债<br>
+                        │<br>
+                        └── 公司债（企业债）<br>
+                            ├── 高风险高收益组<br>
+                            │   ├── 收益：可能6%-10%+<br>
+                            │   └── 风险：公司可能还不上钱<br>
+                            │<br>
+                            └── 可转债（"变形金刚"债券）<br>
+                                ├── 平时：是债券，拿固定利息<br>
+                                ├── 触发条件：可换成股票<br>
+                                └── 特点：下有保底，上不封顶
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-shopping-cart"></i> 新手买债券的3种方式</h3>
+                    <ol>
+                        <li><strong>银行柜台/网银</strong>：买国债（最方便）</li>
+                        <li><strong>证券交易所</strong>：买卖上市债券（像股票一样交易）</li>
+                        <li><strong>债券基金</strong>：专业人帮你买一篮子债券（推荐新手）</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">📈 品种2：股票——当公司"小老板"</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-graduation-cap"></i> 基本概念</h3>
+                    <div class="content-box">
+                        <p><strong>本质</strong>：买公司的一小部分所有权</p>
+                        <p><strong>收益来源</strong>：</p>
+                        <div class="code-block">
+                            1. 股价上涨：10元买→15元卖 = 赚5元<br>
+                            2. 分红：公司赚钱后分给股东（不是每年都有）
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-building"></i> 公司上市流程（简单版）</h3>
+                    <div class="tree-diagram">
+                        初创公司 → 成长 → 上市IPO → 公众可以买卖股票<br>
+                        （私人）    （发展）   （公开募股）  （你我都能买）
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-list"></i> 股票分类大全</h3>
+                    <div class="tree-diagram">
+                        股票类型指南<br>
+                        ├── 按交易所分（中国）<br>
+                        │   ├── 主板：大公司（茅台、工行等）<br>
+                        │   ├── 创业板：成长型中小公司<br>
+                        │   ├── 科创板：科技创新公司<br>
+                        │   └── 北交所：专精特新中小企业<br>
+                        │<br>
+                        ├── 按股票代码开头<br>
+                        │   ├── 60开头：上海主板<br>
+                        │   ├── 00开头：深圳主板/中小板<br>
+                        │   ├── 30开头：创业板<br>
+                        │   └── 68开头：科创板<br>
+                        │<br>
+                        ├── 按公司特点分<br>
+                        │   ├── 蓝筹股：行业龙头，稳定（如茅台、平安）<br>
+                        │   ├── 成长股：快速增长，可能波动大<br>
+                        │   ├── 周期股：随经济周期波动（钢铁、房地产）<br>
+                        │   └── 概念股：因某个热点被关注<br>
+                        │<br>
+                        └── 特殊标识（注意！）<br>
+                            ├── ST/*ST：连续亏损，有退市风险<br>
+                            ├── N：上市第一天<br>
+                            ├── XD：除息日（马上要分红了）<br>
+                            └── DR：除权除息日
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-clipboard-list"></i> 新手买股票必知</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>项目</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>开户</strong></td>
+                                    <td>需要证券账户（在券商APP或营业部开）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>交易单位</strong></td>
+                                    <td>最少买100股（1手）</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>交易时间</strong></td>
+                                    <td>交易日：周一至周五（节假日休市）<br>
+                                        集合竞价：9:15-9:25<br>
+                                        连续竞价：9:30-11:30, 13:00-15:00</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>涨跌幅限制</strong></td>
+                                    <td>主板：±10%<br>
+                                        创业板/科创板：±20%<br>
+                                        新股首日：不同板块规则不同</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🎪 品种3：基金——让专家帮你投资</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-graduation-cap"></i> 基本概念</h3>
+                    <div class="content-box">
+                        <p><strong>本质</strong>：大家凑钱，请专业基金经理帮我们投资</p>
+                        <p><strong>优点</strong>：</p>
+                        <ul>
+                            <li>✅ 分散风险（买一篮子股票/债券）</li>
+                            <li>✅ 专业管理（不用自己研究）</li>
+                            <li>✅ 门槛低（10元就能起投）</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-sitemap"></i> 基金家族树</h3>
+                    <div class="tree-diagram">
+                        基金大家庭<br>
+                        ├── 货币基金（"升级版活期存款"）<br>
+                        │   ├── 风险：极低<br>
+                        │   ├── 收益：2%-3%年化<br>
+                        │   ├── 流动性：随时可取<br>
+                        │   └── 例子：余额宝、零钱通里的产品<br>
+                        │<br>
+                        ├── 债券基金<br>
+                        │   ├── 投资：80%以上是债券<br>
+                        │   ├── 风险：低-中<br>
+                        │   ├── 收益：3%-6%年化<br>
+                        │   └── 适合：稳健型投资者<br>
+                        │<br>
+                        ├── 混合基金（"股债混合套餐"）<br>
+                        │   ├── 类型：偏股、偏债、平衡<br>
+                        │   ├── 风险：中<br>
+                        │   └── 特点：经理灵活调整股债比例<br>
+                        │<br>
+                        ├── 股票基金<br>
+                        │   ├── 投资：80%以上是股票<br>
+                        │   ├── 风险：高<br>
+                        │   ├── 收益：波动大，可能较高<br>
+                        │   └── 适合：能承受波动的投资者<br>
+                        │<br>
+                        ├── 指数基金（"复制粘贴"型）<br>
+                        │   ├── 原理：完全跟踪某个指数<br>
+                        │   ├── 例子：沪深300指数基金<br>
+                        │   ├── 优点：费用低，透明<br>
+                        │   └── 巴菲特推荐给普通人的品种<br>
+                        │<br>
+                        └── ETF基金（"交易所交易基金"）<br>
+                            ├── 特点：像股票一样交易<br>
+                            ├── 优势：费用低，灵活<br>
+                            ├── 常见：<br>
+                            │   ├── 宽基ETF：跟踪大盘指数<br>
+                            │   ├── 行业ETF：专注某个行业<br>
+                            │   └── 跨境ETF：投资海外市场<br>
+                            └── 交易方式：<br>
+                                ├── 场内：证券账户买卖（实时价格）<br>
+                                └── 场外：申购赎回（收盘价）
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-store"></i> 买基金的渠道对比</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>渠道</th>
+                                    <th>适合品种</th>
+                                    <th>优点</th>
+                                    <th>缺点</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>基金公司官网/APP</strong></td>
+                                    <td>自家基金产品</td>
+                                    <td>费用可能最低</td>
+                                    <td>只能买自家产品</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>银行</strong></td>
+                                    <td>理财、国债、基金</td>
+                                    <td>安全可靠，服务好</td>
+                                    <td>费用可能较高</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>支付宝/理财通</strong></td>
+                                    <td>基金、理财</td>
+                                    <td>方便，门槛低</td>
+                                    <td>品种有限</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>证券公司</strong></td>
+                                    <td>ETF、场内基金</td>
+                                    <td>交易灵活，费用低</td>
+                                    <td>需要证券账户</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-lightbulb"></i> 新手选基金小贴士</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="background-color: #4caf50; color: white;">✅ 这样做</th>
+                                    <th style="background-color: #f44336; color: white;">❌ 不要这样做</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>看长期业绩（3-5年）</td>
+                                    <td>只看最近1个月涨得好</td>
+                                </tr>
+                                <tr>
+                                    <td>了解基金经理背景</td>
+                                    <td>盲目追"网红"基金</td>
+                                </tr>
+                                <tr>
+                                    <td>看费用率（越低越好）</td>
+                                    <td>忽略管理费、申购费</td>
+                                </tr>
+                                <tr>
+                                    <td>分散投资（不同类型）</td>
+                                    <td>所有钱买一只基金</td>
+                                </tr>
+                                <tr>
+                                    <td>坚持定投</td>
+                                    <td>一次性在高点买入</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🎢 品种4：衍生品——高风险的"金融杠杆"</h2>
+                
+                <div class="warning-box">
+                    <h4><i class="fas fa-exclamation-circle"></i> 重要提醒</h4>
+                    <p><strong>新手强烈不建议直接参与！</strong></p>
+                    <ul>
+                        <li>复杂度高</li>
+                        <li>风险极大（可能损失超过本金）</li>
+                        <li>需要专业知识</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-book"></i> 了解即可的品种</h3>
+                    <div class="content-box">
+                        <p><strong>1. 期货：</strong></p>
+                        <ul>
+                            <li><strong>特点</strong>：保证金交易（用10万做100万生意）</li>
+                            <li><strong>风险</strong>：可能一夜暴富，也可能血本无归</li>
+                            <li><strong>例子</strong>：股指期货、商品期货</li>
+                        </ul>
+                        
+                        <p><strong>2. 期权：</strong></p>
+                        <ul>
+                            <li><strong>比喻</strong>：像"保险"或"彩票"</li>
+                            <li><strong>特点</strong>：付少量"保费"，获得未来买卖的权利</li>
+                            <li><strong>风险</strong>：买方损失有限（保费），卖方风险无限</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 第三章 -->
+        <section id="chapter3" class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <div>
+                    <h1 class="chapter-title">第三部分：市场地图</h1>
+                    <p>在哪里交易？交易场所全解析</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🏛️ 中国主要证券交易所</h2>
+                
+                <div class="tree-diagram">
+                    交易场所全景<br>
+                    ├── 上海证券交易所（上交所）<br>
+                    │   ├── 定位：大盘股、蓝筹股<br>
+                    │   ├── 板块：主板、科创板<br>
+                    │   └── 代码：60、68开头<br>
+                    │<br>
+                    ├── 深圳证券交易所（深交所）<br>
+                    │   ├── 定位：中小盘、成长股<br>
+                    │   ├── 板块：主板、创业板<br>
+                    │   └── 代码：00、30开头<br>
+                    │<br>
+                    ├── 北京证券交易所（北交所）<br>
+                    │   └── 定位：专精特新中小企业<br>
+                    │<br>
+                    └── 银行间市场<br>
+                        └── 主要交易：债券（普通人通过基金间接参与）
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-shopping-cart"></i> 交易渠道对比</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>渠道</th>
+                                    <th>适合品种</th>
+                                    <th>优点</th>
+                                    <th>缺点</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>证券账户</strong></td>
+                                    <td>股票、债券、ETF、衍生品</td>
+                                    <td>功能全，交易快</td>
+                                    <td>需要学习</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>银行</strong></td>
+                                    <td>理财、国债、基金</td>
+                                    <td>安全可靠，服务好</td>
+                                    <td>费用可能较高</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>支付宝/理财通</strong></td>
+                                    <td>基金、理财</td>
+                                    <td>方便，门槛低</td>
+                                    <td>品种有限</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>基金公司APP</strong></td>
+                                    <td>自家基金</td>
+                                    <td>费用可能优惠</td>
+                                    <td>只能买自家产品</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 第四章 -->
+        <section id="chapter4" class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="fas fa-road"></i>
+                </div>
+                <div>
+                    <h1 class="chapter-title">第四部分：新手投资路线图</h1>
+                    <p>循序渐进的学习与实践路径</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🚀 学习阶段（1-3个月）</h2>
+                
+                <div class="tree-diagram">
+                    第1步：基础知识<br>
+                    ├── 读书：《小狗钱钱》《穷爸爸富爸爸》<br>
+                    ├── 课程：中国证券业协会投资者教育基地（免费）<br>
+                    └── 模拟：用模拟炒股APP练习<br>
+                    <br>
+                    第2步：小额实践<br>
+                    ├── 开立证券账户<br>
+                    ├── 买100元货币基金体验<br>
+                    ├── 尝试100股低价股交易<br>
+                    └── 记录每笔交易的原因和结果<br>
+                    <br>
+                    第3步：建立体系<br>
+                    ├── 确定自己的风险承受能力<br>
+                    ├── 学习看财报基础（至少看懂利润表）<br>
+                    └── 了解常见投资陷阱
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">💼 资产配置建议（根据风险承受能力）</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-shield-alt"></i> 保守型（害怕亏损）</h3>
+                    <div class="content-box">
+                        <ul>
+                            <li>货币基金：40%</li>
+                            <li>债券基金：40%</li>
+                            <li>宽基指数基金：20%</li>
+                            <li><strong>预期年化：3%-5%</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-balance-scale"></i> 稳健型（可接受小幅波动）</h3>
+                    <div class="content-box">
+                        <ul>
+                            <li>债券基金：50%</li>
+                            <li>指数基金：30%</li>
+                            <li>优质股票/股票基金：20%</li>
+                            <li><strong>预期年化：5%-8%</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-chart-line"></i> 平衡型（能承受中等波动）</h3>
+                    <div class="content-box">
+                        <ul>
+                            <li>指数基金：40%</li>
+                            <li>优质股票：30%</li>
+                            <li>债券基金：20%</li>
+                            <li>行业基金：10%</li>
+                            <li><strong>预期年化：8%-12%</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-rocket"></i> 进取型（追求高收益，能承受大波动）</h3>
+                    <div class="content-box">
+                        <ul>
+                            <li>优质股票：50%</li>
+                            <li>成长型基金：30%</li>
+                            <li>指数基金：10%</li>
+                            <li>债券基金：10%</li>
+                            <li><strong>预期年化：12%+（风险也高）</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">⏰ 时间维度建议</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-clock"></i> 短期资金（1年内要用）</h3>
+                    <div class="content-box">
+                        <p>只放：货币基金、银行存款</p>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-calendar-week"></i> 中期资金（1-3年）</h3>
+                    <div class="content-box">
+                        <p>主要：债券基金、稳健混合基金</p>
+                        <p>少量：指数基金</p>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-calendar-alt"></i> 长期资金（3-5年以上）</h3>
+                    <div class="content-box">
+                        <p>核心：指数基金定投</p>
+                        <p>卫星：优质股票、行业基金</p>
+                        <p><strong>可承受较大波动，追求较高回报</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 第五章 -->
+        <section id="chapter5" class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div>
+                    <h1 class="chapter-title">第五部分：新手避坑指南</h1>
+                    <p>常见误区与风险防范</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🚫 常见投资误区</h2>
+                
+                <div class="icon-list">
+                    <li><i class="fas fa-chart-line"></i> <strong>追涨杀跌</strong>：涨了才买，跌了就卖——最容易亏钱</li>
+                    <li><i class="fas fa-comment-dots"></i> <strong>听消息炒股</strong>："我有个朋友说…"——大概率被割韭菜</li>
+                    <li><i class="fas fa-dice-one"></i> <strong>全仓一只股票</strong>——赌徒行为，风险极大</li>
+                    <li><i class="fas fa-exchange-alt"></i> <strong>频繁交易</strong>——给券商打工（交手续费）</li>
+                    <li><i class="fas fa-money-bill-wave"></i> <strong>借钱投资</strong>——可能万劫不复</li>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🎯 建立正确心态</h2>
+                
+                <div class="tip-box">
+                    <ul>
+                        <li>✅ 投资是马拉松，不是百米赛跑</li>
+                        <li>✅ 市场下跌是机会（好公司打折卖）</li>
+                        <li>✅ 不懂的不投</li>
+                        <li>✅ 永远留有余地（不要All in）</li>
+                        <li>✅ 定期复盘，持续学习</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🔍 识别危险信号</h2>
+                
+                <div class="warning-box">
+                    <ul>
+                        <li><strong>承诺保本高收益</strong>：10%以上还保本？很可能是骗局</li>
+                        <li><strong>拉群荐股收费</strong>：非法投顾，别信</li>
+                        <li><strong>境外交易平台</strong>：很多不受国内监管</li>
+                        <li><strong>虚拟币传销</strong>：99%是骗局</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 第六章 -->
+        <section id="chapter6" class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h1 class="chapter-title">第六部分：学习资源推荐</h1>
+                    <p>官方渠道、书籍与实用工具</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🆓 免费官方资源</h2>
+                
+                <div class="icon-list">
+                    <li><i class="fas fa-shield-alt"></i> <strong>中国证券投资者保护基金公司</strong>：投教基地</li>
+                    <li><i class="fas fa-exchange-alt"></i> <strong>沪深交易所官网</strong>：投资者教育栏目</li>
+                    <li><i class="fas fa-gavel"></i> <strong>证监会官网</strong>：政策解读、风险提示</li>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">📖 入门书籍（由浅入深）</h2>
+                
+                <div class="content-box">
+                    <ol>
+                        <li><strong>《小狗钱钱》</strong>——理财观念启蒙</li>
+                        <li><strong>《穷爸爸富爸爸》</strong>——财商培养</li>
+                        <li><strong>《指数基金投资指南》</strong>——实操入门</li>
+                        <li><strong>《股市真规则》</strong>——价值投资入门</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">📱 实用工具</h2>
+                
+                <div class="content-box">
+                    <ol>
+                        <li><strong>理杏仁/乌龟量化</strong>：查财务数据</li>
+                        <li><strong>雪球/东方财富</strong>：看资讯、交流（但要有判断力）</li>
+                        <li><strong>同花顺/i问财</strong>：选股工具</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 理杏仁使用指南 -->
+        <section id="tool1" class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div>
+                    <h1 class="chapter-title">理杏仁使用指南</h1>
+                    <p>专业基本面分析工具详细教程</p>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <h4><i class="fas fa-exclamation-circle"></i> 使用前最重要的提醒（新手必读！）</h4>
+                <ol>
+                    <li><strong>它不是荐股工具</strong>：不会告诉你要买什么，而是帮你验证你想买的公司到底怎么样。</li>
+                    <li><strong>它是辅助工具，不是决策本身</strong>：数据能帮你排除烂公司，但不能保证好公司股价马上涨。</li>
+                    <li><strong>先学基本知识</strong>：最好先了解PE（市盈率）、ROE（净资产收益率）、营收、净利润这些基础财务概念。</li>
+                </ol>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">🧭 第一步：访问与界面初识</h2>
+                
+                <div class="content-box">
+                    <ol>
+                        <li><strong>访问</strong>：直接在浏览器搜索"理杏仁"官网。</li>
+                        <li><strong>界面布局</strong>：
+                            <ul>
+                                <li><strong>顶部搜索框（最核心）</strong>：就像百度，你可以输入股票代码（如 `000858` 五粮液）、股票名称或指数名称。</li>
+                                <li><strong>左侧导航栏</strong>：这里是功能菜单。</li>
+                                <li><strong>中间主区域</strong>：显示图表和数据的地方。</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">📈 第二步：核心功能详解（以贵州茅台为例）</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-search"></i> 功能一：公司概览（第一印象）</h3>
+                    <div class="content-box">
+                        <ol>
+                            <li><strong>做什么</strong>：快速了解一家公司的"基本面画像"。</li>
+                            <li><strong>怎么做</strong>：
+                                <ul>
+                                    <li>在搜索框输入 `600519` 或 `贵州茅台`，进入公司主页。</li>
+                                    <li>首页就是"概览"页面，你会看到：
+                                        <ul>
+                                            <li>实时股价和K线图。</li>
+                                            <li>关键估值指标：PE（市盈率）、PB（市净率），以及它们当前在历史数据中的位置（百分位）。</li>
+                                            <li>核心财务数据：营收、净利润、ROE等最近季度的数据。</li>
+                                            <li>公司所属行业。</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>新手怎么看</strong>：
+                                <ul>
+                                    <li><strong>看趋势</strong>：营收和净利润的柱状图是不是在往上走？</li>
+                                    <li><strong>看估值</strong>：PE百分位很高（比如>80%），说明现在可能比历史上80%的时间都贵，要谨慎。</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title"><i class="fas fa-file-medical"></i> 功能二：深度资料（公司体检报告）</h3>
+                    <div class="content-box">
+                        <p>这是理杏仁的精华，在导航栏找到"深度资料"。</p>
+                        
+                        <p><strong>1. 财务分析：</strong></p>
+                        <ul>
+                            <li><strong>利润表</strong>：看公司<strong>赚不赚钱</strong>（营收、净利润）。</li>
+                            <li><strong>资产负债表</strong>：看公司<strong>家底厚不厚、债务重不重</strong>（总资产、有息负债）。</li>
+                            <li><strong>现金流量表</strong>：看公司<strong>收没收到真金白银</strong>（经营现金流）。<strong>利润再好，没有现金流入也可能是纸上富贵。</strong></li>
+                        </ul>
+                        
+                        <p><strong>新手重点看：</strong></p>
+                        <ul>
+                            <li>`归母净利润` 增长率：是不是每年在稳定增长？（曲线向上）</li>
+                            <li>`资产负债率`：如果超过60%且很高，要小心债务问题。</li>
+                            <li>`经营现金流净额`：最好和净利润匹配，常年为正。</li>
+                        </ul>
+                        
+                        <p><strong>2. 指标分析（必学！）：</strong></p>
+                        <ul>
+                            <li><strong>盈利能力</strong>：
+                                <ul>
+                                    <li>`ROE（净资产收益率）`：<strong>巴菲特最看重的指标之一</strong>。长期（如5-10年）能稳定在15%以上的公司，通常是好公司。茅台常年在30%左右，非常优秀。</li>
+                                </ul>
+                            </li>
+                            <li><strong>估值指标</strong>：
+                                <ul>
+                                    <li>`PE（市盈率）`：你愿意为公司每1元利润出多少钱？结合"分位点"看历史贵贱。</li>
+                                    <li>`PB（市净率）`：更适合评估银行、保险公司等资产型公司。</li>
+                                </ul>
+                            </li>
+                            <li><strong>新手建议</strong>：先学会跟踪`ROE`和`PE`这两个指标，已经能超过很多散户了。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="interactive-box">
+                <h4><i class="fas fa-hands-helping"></i> 新手使用路径建议</h4>
+                <p>假设你想研究一家公司"格力电器（000651）"：</p>
+                <div class="content-box">
+                    <p><strong>第1天：建立初步印象（10分钟）</strong></p>
+                    <p>搜索`000651`进入概览页。看一眼：股价趋势是向上还是向下？近期的营收和净利润是增是减？当前的PE是多少，历史百分位高不高？</p>
+                    
+                    <p><strong>第2天：进行深度体检（30分钟）</strong></p>
+                    <p>进入"深度资料" → "财务分析"。看"利润表"：过去5年"归母净利润"的曲线是稳步上升，还是波动很大？</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 资产配置计算器 -->
+        <section id="tool2" class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div>
+                    <h1 class="chapter-title">资产配置计算器</h1>
+                    <p>根据您的风险偏好定制投资组合</p>
+                </div>
+            </div>
+            
+            <div class="interactive-box">
+                <h4><i class="fas fa-calculator"></i> 简易资产配置计算器</h4>
+                <p>选择您的风险偏好，查看推荐配置：</p>
+                
+                <div style="margin: 20px 0;">
+                    <label for="riskLevel" style="display: block; margin-bottom: 10px; font-weight: bold;">风险承受能力：</label>
+                    <select id="riskLevel" style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #3949ab; font-size: 1rem;">
+                        <option value="conservative">保守型（害怕亏损）</option>
+                        <option value="moderate">稳健型（可接受小幅波动）</option>
+                        <option value="balanced">平衡型（能承受中等波动）</option>
+                        <option value="aggressive">进取型（追求高收益）</option>
+                    </select>
+                </div>
+                
+                <div style="margin: 20px 0;">
+                    <label for="investmentAmount" style="display: block; margin-bottom: 10px; font-weight: bold;">投资金额（元）：</label>
+                    <input type="number" id="investmentAmount" value="10000" min="100" step="100" style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #3949ab; font-size: 1rem;">
+                </div>
+                
+                <button id="calculateBtn" style="background: linear-gradient(135deg, #1a237e, #3949ab); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; width: 100%; margin-top: 10px;">
+                    <i class="fas fa-calculator"></i> 计算我的资产配置
+                </button>
+                
+                <div id="resultContainer" style="margin-top: 30px; display: none;">
+                    <h4 style="color: #1a237e; margin-bottom: 15px;">您的推荐配置：</h4>
+                    <div id="resultContent"></div>
+                    <div id="resultChart" style="height: 200px; margin-top: 20px; display: flex; align-items: flex-end; justify-content: space-around;">
+                        <!-- 图表将在这里动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 最后章节 -->
+        <section id="final" class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div>
+                    <h1 class="chapter-title">最后：给新手的真心话</h1>
+                    <p>投资是一场修行，不是赌博</p>
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                <h4><i class="fas fa-lightbulb"></i> 记住这些核心原则：</h4>
+                <ol>
+                    <li><strong>先学习，后投资</strong>：花至少100小时学习再投入大钱</li>
+                    <li><strong>用闲钱投资</strong>：影响生活的钱不要投</li>
+                    <li><strong>长期主义</strong>：和时间做朋友，复利是最强大的武器</li>
+                    <li><strong>保持谦卑</strong>：市场永远比你聪明</li>
+                    <li><strong>享受过程</strong>：投资的乐趣不仅在于赚钱，更在于认知提升</li>
+                </ol>
+            </div>
+            
+            <div class="content-box">
+                <h4>起步建议：</h4>
+                <div class="tree-diagram">
+                    第1个月：读2本入门书，开模拟账户<br>
+                    第2个月：投入1000元真实资金体验<br>
+                    第3个月：建立自己的投资计划<br>
+                    第1年：目标不是赚多少钱，而是不亏钱+积累经验
+                </div>
+            </div>
+            
+            <div class="interactive-box">
+                <h4><i class="fas fa-award"></i> 祝你在投资路上：</h4>
+                <p style="font-size: 1.2rem; color: #1a237e;">稳步前行，收获知识、财富和更好的自己！✨</p>
+            </div>
+            
+            <div class="warning-box">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>风险提示</strong>：市场有风险，投资需谨慎。本指南仅为知识普及，不构成投资建议。</p>
+            </div>
+        </section>
+        
+        <!-- 术语表 -->
+        <section id="glossary" class="chapter">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div>
+                    <h1 class="chapter-title">投资术语表</h1>
+                    <p>常用证券投资术语解释</p>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>术语</th>
+                            <th>解释</th>
+                            <th>重要性</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PE（市盈率）</strong></td>
+                            <td>股价除以每股收益，衡量股票估值高低</td>
+                            <td>★★★★★</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ROE（净资产收益率）</strong></td>
+                            <td>净利润除以净资产，衡量公司赚钱能力</td>
+                            <td>★★★★★</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IPO（首次公开发行）</strong></td>
+                            <td>公司第一次向公众出售股票</td>
+                            <td>★★★★☆</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ETF（交易所交易基金）</strong></td>
+                            <td>在交易所交易的指数基金</td>
+                            <td>★★★★☆</td>
+                        </tr>
+                        <tr>
+                            <td><strong>股息率</strong></td>
+                            <td>每股股息除以股价，衡量现金分红回报</td>
+                            <td>★★★★☆</td>
+                        </tr>
+                        <tr>
+                            <td><strong>市值</strong></td>
+                            <td>公司总股本乘以股价，衡量公司规模</td>
+                            <td>★★★☆☆</td>
+                        </tr>
+                        <tr>
+                            <td><strong>流动性</strong></td>
+                            <td>资产变现的容易程度</td>
+                            <td>★★★☆☆</td>
+                        </tr>
+                        <tr>
+                            <td><strong>β值（贝塔系数）</strong></td>
+                            <td>衡量股票相对于大盘的波动性</td>
+                            <td>★★☆☆☆</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <div class="footer">
+            <p>© 2023 证券市场完全入门指南 - 新手友好版</p>
+            <p>本内容仅供参考，不构成任何投资建议。投资有风险，入市需谨慎。</p>
+        </div>
+    </main>
+    
+    <!-- 返回顶部按钮 -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <script>
+        // 侧边栏导航功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有导航链接
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            // 为每个导航链接添加点击事件
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // 移除所有active类
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // 为当前点击的链接添加active类
+                    this.classList.add('active');
+                    
+                    // 在移动端点击后关闭侧边栏
+                    if (window.innerWidth <= 1024) {
+                        document.getElementById('sidebar').classList.remove('active');
+                    }
+                });
+            });
+            
+            // 侧边栏切换按钮（移动端）
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+            
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                });
+            }
+            
+            // 返回顶部按钮
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                // 显示/隐藏返回顶部按钮
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+                
+                // 更新阅读进度
+                updateReadingProgress();
+                
+                // 高亮当前阅读章节
+                highlightCurrentChapter();
+            });
+            
+            // 资产配置计算器
+            const calculateBtn = document.getElementById('calculateBtn');
+            const riskLevel = document.getElementById('riskLevel');
+            const investmentAmount = document.getElementById('investmentAmount');
+            const resultContainer = document.getElementById('resultContainer');
+            const resultContent = document.getElementById('resultContent');
+            const resultChart = document.getElementById('resultChart');
+            
+            // 配置方案数据
+            const allocationPlans = {
+                conservative: {
+                    name: "保守型",
+                    description: "适合极度风险厌恶者，主要目标是保本",
+                    allocations: [
+                        { name: "货币基金", percentage: 40, color: "#4CAF50" },
+                        { name: "债券基金", percentage: 40, color: "#2196F3" },
+                        { name: "宽基指数基金", percentage: 20, color: "#9C27B0" }
+                    ],
+                    expectedReturn: "3%-5%"
+                },
+                moderate: {
+                    name: "稳健型",
+                    description: "适合能接受小幅波动的投资者",
+                    allocations: [
+                        { name: "债券基金", percentage: 50, color: "#2196F3" },
+                        { name: "指数基金", percentage: 30, color: "#9C27B0" },
+                        { name: "优质股票/股票基金", percentage: 20, color: "#FF9800" }
+                    ],
+                    expectedReturn: "5%-8%"
+                },
+                balanced: {
+                    name: "平衡型",
+                    description: "适合能承受中等波动的投资者",
+                    allocations: [
+                        { name: "指数基金", percentage: 40, color: "#9C27B0" },
+                        { name: "优质股票", percentage: 30, color: "#FF9800" },
+                        { name: "债券基金", percentage: 20, color: "#2196F3" },
+                        { name: "行业基金", percentage: 10, color: "#F44336" }
+                    ],
+                    expectedReturn: "8%-12%"
+                },
+                aggressive: {
+                    name: "进取型",
+                    description: "适合追求高收益，能承受大波动的投资者",
+                    allocations: [
+                        { name: "优质股票", percentage: 50, color: "#FF9800" },
+                        { name: "成长型基金", percentage: 30, color: "#F44336" },
+                        { name: "指数基金", percentage: 10, color: "#9C27B0" },
+                        { name: "债券基金", percentage: 10, color: "#2196F3" }
+                    ],
+                    expectedReturn: "12%以上"
+                }
+            };
+            
+            calculateBtn.addEventListener('click', function() {
+                const plan = allocationPlans[riskLevel.value];
+                const amount = parseFloat(investmentAmount.value) || 10000;
+                
+                // 生成结果内容
+                let html = `<h5>${plan.name}配置方案</h5>`;
+                html += `<p>${plan.description}</p>`;
+                html += `<p><strong>预期年化收益：${plan.expectedReturn}</strong></p>`;
+                html += `<ul>`;
+                
+                plan.allocations.forEach(item => {
+                    const itemAmount = (amount * item.percentage / 100).toFixed(2);
+                    html += `<li><strong>${item.name} (${item.percentage}%)</strong>: ¥${itemAmount}</li>`;
+                });
+                
+                html += `</ul>`;
+                html += `<p><strong>总投资金额：¥${amount.toFixed(2)}</strong></p>`;
+                
+                resultContent.innerHTML = html;
+                
+                // 生成图表
+                resultChart.innerHTML = '';
+                plan.allocations.forEach(item => {
+                    const barHeight = item.percentage * 1.5;
+                    const bar = document.createElement('div');
+                    bar.style.cssText = `
+                        width: 60px;
+                        height: ${barHeight}px;
+                        background-color: ${item.color};
+                        border-radius: 4px 4px 0 0;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-end;
+                        align-items: center;
+                        padding-bottom: 5px;
+                        color: white;
+                        font-weight: bold;
+                    `;
+                    bar.innerHTML = `<div>${item.percentage}%</div>`;
+                    
+                    const label = document.createElement('div');
+                    label.style.cssText = `
+                        margin-top: 5px;
+                        font-size: 12px;
+                        text-align: center;
+                        width: 60px;
+                        overflow: hidden;
+                    `;
+                    label.textContent = item.name;
+                    
+                    const column = document.createElement('div');
+                    column.style.cssText = `
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    `;
+                    
+                    column.appendChild(bar);
+                    column.appendChild(label);
+                    resultChart.appendChild(column);
+                });
+                
+                // 显示结果
+                resultContainer.style.display = 'block';
+                
+                // 滚动到结果
+                resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+            
+            // 初始化计算器
+            calculateBtn.click();
+            
+            // 更新阅读进度
+            function updateReadingProgress() {
+                const chapters = document.querySelectorAll('.chapter');
+                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrolled = window.pageYOffset;
+                const progress = (scrolled / totalHeight) * 100;
+                
+                // 更新进度条
+                document.getElementById('readingProgress').style.width = progress + '%';
+                document.getElementById('sidebarProgress').style.width = progress + '%';
+                document.getElementById('progressPercent').textContent = Math.min(100, Math.round(progress)) + '%';
+            }
+            
+            // 高亮当前阅读章节
+            function highlightCurrentChapter() {
+                const chapters = document.querySelectorAll('.chapter');
+                const navLinks = document.querySelectorAll('.nav-links a');
+                
+                let currentChapterId = '';
+                
+                chapters.forEach(chapter => {
+                    const chapterTop = chapter.offsetTop - 100;
+                    const chapterBottom = chapterTop + chapter.offsetHeight;
+                    
+                    if (window.pageYOffset >= chapterTop && window.pageYOffset < chapterBottom) {
+                        currentChapterId = chapter.id;
+                    }
+                });
+                
+                // 更新导航栏高亮
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + currentChapterId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // 点击页面任意位置关闭移动端侧边栏
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1024 && 
+                    !sidebar.contains(e.target) && 
+                    e.target !== sidebarToggle && 
+                    !sidebarToggle.contains(e.target)) {
+                    sidebar.classList.remove('active');
+                }
+            });
+            
+            // 初始化阅读进度
+            updateReadingProgress();
+        });
+    </script>
+</body>
+</html>
